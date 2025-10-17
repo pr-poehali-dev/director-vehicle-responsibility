@@ -1,7 +1,5 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
 import Icon from "@/components/ui/icon";
 import { useState } from "react";
 
@@ -21,22 +19,22 @@ const Index = () => {
       <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <div className="container mx-auto flex h-16 items-center justify-between px-4">
           <div className="flex items-center gap-2">
-            <Icon name="Scale" size={28} className="text-primary" />
-            <h1 className="text-2xl font-bold text-primary">ЮрКонсалт</h1>
+            <Icon name="ShoppingCart" size={28} className="text-primary" />
+            <h1 className="text-2xl font-bold text-primary">ЭТП Метрики</h1>
           </div>
           <nav className="hidden md:flex gap-6">
             {[
               { id: "home", label: "Главная" },
-              { id: "responsibility", label: "Ответственность" },
-              { id: "legislation", label: "Законодательство" },
-              { id: "practice", label: "Практика" },
-              { id: "contact", label: "Контакты" },
+              { id: "metrics", label: "Метрики" },
+              { id: "technical", label: "Технические" },
+              { id: "financial", label: "Финансовые" },
+              { id: "comparison", label: "Сравнение" },
             ].map((item) => (
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
                 className={`text-sm font-medium transition-colors hover:text-primary ${
-                  activeSection === item.id ? "text-primary" : "text-secondary"
+                  activeSection === item.id ? "text-primary" : "text-foreground/60"
                 }`}
               >
                 {item.label}
@@ -46,162 +44,231 @@ const Index = () => {
         </div>
       </header>
 
-      <section id="home" className="py-20 bg-gradient-to-b from-muted/50 to-background">
+      <section id="home" className="py-20 bg-gradient-to-b from-primary/5 to-background">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="text-5xl font-bold mb-6 text-foreground">
-              Ответственность директора за сотрудника, управляющего транспортным средством
+              Метрики выбора электронной торговой площадки
             </h2>
             <p className="text-lg text-muted-foreground mb-8">
-              Комплексная юридическая информация о нормах законодательства и судебной практике
+              Комплексная система показателей для принятия обоснованного решения при выборе ЭТП для вашего бизнеса
             </p>
             <Button
               size="lg"
-              onClick={() => scrollToSection("responsibility")}
+              onClick={() => scrollToSection("metrics")}
               className="bg-primary hover:bg-primary/90"
             >
-              Узнать подробнее
+              Изучить метрики
             </Button>
           </div>
         </div>
       </section>
 
-      <section id="responsibility" className="py-16">
+      <section id="metrics" className="py-16">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-4xl font-bold mb-8 text-center">Ответственность</h2>
+          <div className="max-w-6xl mx-auto">
+            <h2 className="text-4xl font-bold mb-8 text-center">Ключевые метрики выбора</h2>
+            <div className="grid md:grid-cols-3 gap-6">
+              <Card className="border-border hover:shadow-lg transition-shadow">
+                <CardHeader>
+                  <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+                    <Icon name="Users" size={24} className="text-primary" />
+                  </div>
+                  <CardTitle>Охват аудитории</CardTitle>
+                  <CardDescription>
+                    Количество зарегистрированных покупателей и поставщиков
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <ul className="space-y-2 text-sm text-muted-foreground">
+                    <li className="flex items-start gap-2">
+                      <Icon name="ChevronRight" size={16} className="mt-0.5 flex-shrink-0" />
+                      <span>Активная база покупателей</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <Icon name="ChevronRight" size={16} className="mt-0.5 flex-shrink-0" />
+                      <span>География участников</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <Icon name="ChevronRight" size={16} className="mt-0.5 flex-shrink-0" />
+                      <span>Отраслевая специализация</span>
+                    </li>
+                  </ul>
+                </CardContent>
+              </Card>
+
+              <Card className="border-border hover:shadow-lg transition-shadow">
+                <CardHeader>
+                  <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+                    <Icon name="TrendingUp" size={24} className="text-primary" />
+                  </div>
+                  <CardTitle>Объем торгов</CardTitle>
+                  <CardDescription>
+                    Годовой оборот и количество проведенных процедур
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <ul className="space-y-2 text-sm text-muted-foreground">
+                    <li className="flex items-start gap-2">
+                      <Icon name="ChevronRight" size={16} className="mt-0.5 flex-shrink-0" />
+                      <span>Общий объем торгов за год</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <Icon name="ChevronRight" size={16} className="mt-0.5 flex-shrink-0" />
+                      <span>Количество завершенных сделок</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <Icon name="ChevronRight" size={16} className="mt-0.5 flex-shrink-0" />
+                      <span>Средний чек сделки</span>
+                    </li>
+                  </ul>
+                </CardContent>
+              </Card>
+
+              <Card className="border-border hover:shadow-lg transition-shadow">
+                <CardHeader>
+                  <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+                    <Icon name="Award" size={24} className="text-primary" />
+                  </div>
+                  <CardTitle>Репутация площадки</CardTitle>
+                  <CardDescription>
+                    Рейтинг, отзывы и время работы на рынке
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <ul className="space-y-2 text-sm text-muted-foreground">
+                    <li className="flex items-start gap-2">
+                      <Icon name="ChevronRight" size={16} className="mt-0.5 flex-shrink-0" />
+                      <span>Срок работы на рынке</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <Icon name="ChevronRight" size={16} className="mt-0.5 flex-shrink-0" />
+                      <span>Рейтинг и отзывы участников</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <Icon name="ChevronRight" size={16} className="mt-0.5 flex-shrink-0" />
+                      <span>Аккредитация и сертификаты</span>
+                    </li>
+                  </ul>
+                </CardContent>
+              </Card>
+
+              <Card className="border-border hover:shadow-lg transition-shadow">
+                <CardHeader>
+                  <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+                    <Icon name="Shield" size={24} className="text-primary" />
+                  </div>
+                  <CardTitle>Безопасность</CardTitle>
+                  <CardDescription>
+                    Защита данных и соответствие стандартам
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <ul className="space-y-2 text-sm text-muted-foreground">
+                    <li className="flex items-start gap-2">
+                      <Icon name="ChevronRight" size={16} className="mt-0.5 flex-shrink-0" />
+                      <span>Сертификаты безопасности (SSL, ЭЦП)</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <Icon name="ChevronRight" size={16} className="mt-0.5 flex-shrink-0" />
+                      <span>Защита персональных данных</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <Icon name="ChevronRight" size={16} className="mt-0.5 flex-shrink-0" />
+                      <span>История инцидентов</span>
+                    </li>
+                  </ul>
+                </CardContent>
+              </Card>
+
+              <Card className="border-border hover:shadow-lg transition-shadow">
+                <CardHeader>
+                  <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+                    <Icon name="Headphones" size={24} className="text-primary" />
+                  </div>
+                  <CardTitle>Поддержка</CardTitle>
+                  <CardDescription>
+                    Качество и доступность технической поддержки
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <ul className="space-y-2 text-sm text-muted-foreground">
+                    <li className="flex items-start gap-2">
+                      <Icon name="ChevronRight" size={16} className="mt-0.5 flex-shrink-0" />
+                      <span>Доступность 24/7</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <Icon name="ChevronRight" size={16} className="mt-0.5 flex-shrink-0" />
+                      <span>Каналы связи (чат, телефон, email)</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <Icon name="ChevronRight" size={16} className="mt-0.5 flex-shrink-0" />
+                      <span>Среднее время ответа</span>
+                    </li>
+                  </ul>
+                </CardContent>
+              </Card>
+
+              <Card className="border-border hover:shadow-lg transition-shadow">
+                <CardHeader>
+                  <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+                    <Icon name="FileCheck" size={24} className="text-primary" />
+                  </div>
+                  <CardTitle>Функциональность</CardTitle>
+                  <CardDescription>
+                    Доступные инструменты и типы торгов
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <ul className="space-y-2 text-sm text-muted-foreground">
+                    <li className="flex items-start gap-2">
+                      <Icon name="ChevronRight" size={16} className="mt-0.5 flex-shrink-0" />
+                      <span>Типы процедур (223-ФЗ, 44-ФЗ, коммерческие)</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <Icon name="ChevronRight" size={16} className="mt-0.5 flex-shrink-0" />
+                      <span>Инструменты аналитики и отчетности</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <Icon name="ChevronRight" size={16} className="mt-0.5 flex-shrink-0" />
+                      <span>Интеграция с внешними системами</span>
+                    </li>
+                  </ul>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="technical" className="py-16 bg-muted/30">
+        <div className="container mx-auto px-4">
+          <div className="max-w-5xl mx-auto">
+            <h2 className="text-4xl font-bold mb-8 text-center">Технические метрики</h2>
             <div className="grid md:grid-cols-2 gap-6">
-              <Card className="border-border hover:shadow-lg transition-shadow">
-                <CardHeader>
-                  <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
-                    <Icon name="AlertTriangle" size={24} className="text-primary" />
-                  </div>
-                  <CardTitle>Административная ответственность</CardTitle>
-                  <CardDescription>
-                    Директор несет ответственность за нарушения, совершенные сотрудником при управлении служебным транспортом
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <ul className="space-y-2 text-sm text-muted-foreground">
-                    <li className="flex items-start gap-2">
-                      <Icon name="ChevronRight" size={16} className="mt-0.5 flex-shrink-0" />
-                      <span>КоАП РФ Статья 2.6.1 - ответственность владельца транспортного средства</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <Icon name="ChevronRight" size={16} className="mt-0.5 flex-shrink-0" />
-                      <span>Штрафы за нарушения ПДД фиксируются на организацию</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <Icon name="ChevronRight" size={16} className="mt-0.5 flex-shrink-0" />
-                      <span>Возможность регресса к сотруднику при умышленных нарушениях</span>
-                    </li>
-                  </ul>
-                </CardContent>
-              </Card>
-
-              <Card className="border-border hover:shadow-lg transition-shadow">
-                <CardHeader>
-                  <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
-                    <Icon name="FileText" size={24} className="text-primary" />
-                  </div>
-                  <CardTitle>Гражданская ответственность</CardTitle>
-                  <CardDescription>
-                    Компенсация ущерба третьим лицам при ДТП с участием служебного транспорта
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <ul className="space-y-2 text-sm text-muted-foreground">
-                    <li className="flex items-start gap-2">
-                      <Icon name="ChevronRight" size={16} className="mt-0.5 flex-shrink-0" />
-                      <span>ГК РФ Статья 1068 - ответственность работодателя за работника</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <Icon name="ChevronRight" size={16} className="mt-0.5 flex-shrink-0" />
-                      <span>Обязательное страхование ОСАГО</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <Icon name="ChevronRight" size={16} className="mt-0.5 flex-shrink-0" />
-                      <span>Возмещение сверх лимита страховки за счет организации</span>
-                    </li>
-                  </ul>
-                </CardContent>
-              </Card>
-
-              <Card className="border-border hover:shadow-lg transition-shadow">
-                <CardHeader>
-                  <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
-                    <Icon name="ShieldAlert" size={24} className="text-primary" />
-                  </div>
-                  <CardTitle>Уголовная ответственность</CardTitle>
-                  <CardDescription>
-                    Наступает при тяжких последствиях ДТП с участием служебного транспорта
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <ul className="space-y-2 text-sm text-muted-foreground">
-                    <li className="flex items-start gap-2">
-                      <Icon name="ChevronRight" size={16} className="mt-0.5 flex-shrink-0" />
-                      <span>УК РФ Статья 264 - нарушение ПДД с тяжкими последствиями</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <Icon name="ChevronRight" size={16} className="mt-0.5 flex-shrink-0" />
-                      <span>Ответственность водителя, допустившего нарушение</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <Icon name="ChevronRight" size={16} className="mt-0.5 flex-shrink-0" />
-                      <span>Потенциальная ответственность руководителя при грубых нарушениях</span>
-                    </li>
-                  </ul>
-                </CardContent>
-              </Card>
-
-              <Card className="border-border hover:shadow-lg transition-shadow">
-                <CardHeader>
-                  <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
-                    <Icon name="ClipboardCheck" size={24} className="text-primary" />
-                  </div>
-                  <CardTitle>Профилактические меры</CardTitle>
-                  <CardDescription>
-                    Рекомендации по снижению рисков и минимизации ответственности
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <ul className="space-y-2 text-sm text-muted-foreground">
-                    <li className="flex items-start gap-2">
-                      <Icon name="ChevronRight" size={16} className="mt-0.5 flex-shrink-0" />
-                      <span>Регулярные медосмотры и проверка квалификации водителей</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <Icon name="ChevronRight" size={16} className="mt-0.5 flex-shrink-0" />
-                      <span>Контроль технического состояния транспорта</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <Icon name="ChevronRight" size={16} className="mt-0.5 flex-shrink-0" />
-                      <span>Инструктажи по безопасности дорожного движения</span>
-                    </li>
-                  </ul>
-                </CardContent>
-              </Card>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="legislation" className="py-16 bg-muted/30">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-4xl font-bold mb-8 text-center">Законодательство</h2>
-            <div className="space-y-4">
               <Card className="border-border">
                 <CardHeader>
                   <div className="flex items-start gap-4">
                     <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <Icon name="BookOpen" size={24} className="text-primary" />
+                      <Icon name="Gauge" size={24} className="text-primary" />
                     </div>
                     <div>
-                      <CardTitle>Кодекс об административных правонарушениях (КоАП РФ)</CardTitle>
+                      <CardTitle>Производительность системы</CardTitle>
                       <CardDescription className="mt-2">
-                        Статья 2.6.1 устанавливает, что к административной ответственности за нарушения в области дорожного движения, зафиксированные работающими в автоматическом режиме специальными техническими средствами, привлекается собственник транспортного средства.
+                        <div className="space-y-2 mt-3">
+                          <div className="flex justify-between items-center">
+                            <span className="text-sm">Uptime (доступность)</span>
+                            <span className="font-semibold text-primary">≥ 99.5%</span>
+                          </div>
+                          <div className="flex justify-between items-center">
+                            <span className="text-sm">Скорость загрузки страниц</span>
+                            <span className="font-semibold text-primary">{"<"} 3 сек</span>
+                          </div>
+                          <div className="flex justify-between items-center">
+                            <span className="text-sm">Пропускная способность</span>
+                            <span className="font-semibold text-primary">1000+ одновременных пользователей</span>
+                          </div>
+                        </div>
                       </CardDescription>
                     </div>
                   </div>
@@ -212,12 +279,25 @@ const Index = () => {
                 <CardHeader>
                   <div className="flex items-start gap-4">
                     <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <Icon name="Scale" size={24} className="text-primary" />
+                      <Icon name="Smartphone" size={24} className="text-primary" />
                     </div>
                     <div>
-                      <CardTitle>Гражданский кодекс РФ (ГК РФ)</CardTitle>
+                      <CardTitle>Удобство интерфейса</CardTitle>
                       <CardDescription className="mt-2">
-                        Статья 1068: Юридическое лицо либо гражданин возмещает вред, причиненный его работником при исполнении трудовых (служебных, должностных) обязанностей. Работодатель вправе предъявить регрессное требование к работнику в случаях, предусмотренных Трудовым кодексом.
+                        <ul className="space-y-2 mt-3 text-sm">
+                          <li className="flex items-start gap-2">
+                            <Icon name="Check" size={16} className="mt-0.5 text-primary flex-shrink-0" />
+                            <span>Адаптивный дизайн (мобильные устройства)</span>
+                          </li>
+                          <li className="flex items-start gap-2">
+                            <Icon name="Check" size={16} className="mt-0.5 text-primary flex-shrink-0" />
+                            <span>Интуитивная навигация</span>
+                          </li>
+                          <li className="flex items-start gap-2">
+                            <Icon name="Check" size={16} className="mt-0.5 text-primary flex-shrink-0" />
+                            <span>Поиск и фильтрация процедур</span>
+                          </li>
+                        </ul>
                       </CardDescription>
                     </div>
                   </div>
@@ -228,12 +308,25 @@ const Index = () => {
                 <CardHeader>
                   <div className="flex items-start gap-4">
                     <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <Icon name="Gavel" size={24} className="text-primary" />
+                      <Icon name="Link" size={24} className="text-primary" />
                     </div>
                     <div>
-                      <CardTitle>Уголовный кодекс РФ (УК РФ)</CardTitle>
+                      <CardTitle>Интеграционные возможности</CardTitle>
                       <CardDescription className="mt-2">
-                        Статья 264: Нарушение лицом, управляющим автомобилем, правил дорожного движения, повлекшее по неосторожности причинение тяжкого вреда здоровью человека или смерть, влечет уголовную ответственность водителя.
+                        <ul className="space-y-2 mt-3 text-sm">
+                          <li className="flex items-start gap-2">
+                            <Icon name="Check" size={16} className="mt-0.5 text-primary flex-shrink-0" />
+                            <span>API для интеграции с 1С, SAP</span>
+                          </li>
+                          <li className="flex items-start gap-2">
+                            <Icon name="Check" size={16} className="mt-0.5 text-primary flex-shrink-0" />
+                            <span>Экспорт данных (Excel, XML, JSON)</span>
+                          </li>
+                          <li className="flex items-start gap-2">
+                            <Icon name="Check" size={16} className="mt-0.5 text-primary flex-shrink-0" />
+                            <span>Подключение к ЕИС, ЕРУЗ</span>
+                          </li>
+                        </ul>
                       </CardDescription>
                     </div>
                   </div>
@@ -244,12 +337,25 @@ const Index = () => {
                 <CardHeader>
                   <div className="flex items-start gap-4">
                     <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <Icon name="FileCheck" size={24} className="text-primary" />
+                      <Icon name="Database" size={24} className="text-primary" />
                     </div>
                     <div>
-                      <CardTitle>Трудовой кодекс РФ (ТК РФ)</CardTitle>
+                      <CardTitle>Хранение и архивация</CardTitle>
                       <CardDescription className="mt-2">
-                        Статья 238: Работник обязан возместить работодателю причиненный ему прямой действительный ущерб. Неполученные доходы (упущенная выгода) взысканию с работника не подлежат. Статья 241: За причиненный ущерб работник несет материальную ответственность в пределах своего среднего месячного заработка.
+                        <ul className="space-y-2 mt-3 text-sm">
+                          <li className="flex items-start gap-2">
+                            <Icon name="Check" size={16} className="mt-0.5 text-primary flex-shrink-0" />
+                            <span>Срок хранения документов (минимум 3 года)</span>
+                          </li>
+                          <li className="flex items-start gap-2">
+                            <Icon name="Check" size={16} className="mt-0.5 text-primary flex-shrink-0" />
+                            <span>Резервное копирование</span>
+                          </li>
+                          <li className="flex items-start gap-2">
+                            <Icon name="Check" size={16} className="mt-0.5 text-primary flex-shrink-0" />
+                            <span>Доступ к архиву в любое время</span>
+                          </li>
+                        </ul>
                       </CardDescription>
                     </div>
                   </div>
@@ -260,83 +366,91 @@ const Index = () => {
         </div>
       </section>
 
-      <section id="practice" className="py-16">
+      <section id="financial" className="py-16">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-4xl font-bold mb-8 text-center">Судебная практика</h2>
-            <div className="space-y-6">
+          <div className="max-w-5xl mx-auto">
+            <h2 className="text-4xl font-bold mb-8 text-center">Финансовые метрики</h2>
+            <div className="grid md:grid-cols-3 gap-6">
               <Card className="border-border hover:shadow-lg transition-shadow">
                 <CardHeader>
-                  <div className="flex items-start justify-between gap-4">
-                    <div>
-                      <CardTitle className="text-xl">
-                        Определение Верховного Суда РФ от 15.08.2018 № 41-КГ18-21
-                      </CardTitle>
-                      <CardDescription className="mt-2">
-                        Работодатель несет ответственность за вред, причиненный его работником
-                      </CardDescription>
-                    </div>
-                    <Icon name="FileText" size={32} className="text-primary flex-shrink-0" />
+                  <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+                    <Icon name="DollarSign" size={24} className="text-primary" />
                   </div>
+                  <CardTitle>Стоимость участия</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-sm text-muted-foreground mb-4">
-                    Суд подтвердил, что организация-работодатель обязана возместить вред, причиненный водителем служебного автомобиля третьим лицам при ДТП, произошедшем в рабочее время. После возмещения работодатель вправе предъявить регрессное требование к работнику в размере прямого действительного ущерба.
-                  </p>
-                  <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                    <Icon name="Calendar" size={14} />
-                    <span>15 августа 2018</span>
-                  </div>
+                  <ul className="space-y-3 text-sm">
+                    <li className="flex justify-between items-center">
+                      <span className="text-muted-foreground">Регистрация</span>
+                      <span className="font-semibold">0 - 50 000 ₽</span>
+                    </li>
+                    <li className="flex justify-between items-center">
+                      <span className="text-muted-foreground">Годовое обслуживание</span>
+                      <span className="font-semibold">10 000 - 300 000 ₽</span>
+                    </li>
+                    <li className="flex justify-between items-center">
+                      <span className="text-muted-foreground">Комиссия за сделку</span>
+                      <span className="font-semibold">0.1% - 3%</span>
+                    </li>
+                  </ul>
                 </CardContent>
               </Card>
 
               <Card className="border-border hover:shadow-lg transition-shadow">
                 <CardHeader>
-                  <div className="flex items-start justify-between gap-4">
-                    <div>
-                      <CardTitle className="text-xl">
-                        Постановление Пленума ВС РФ от 26.01.2010 № 1
-                      </CardTitle>
-                      <CardDescription className="mt-2">
-                        О применении судами гражданского законодательства в делах о компенсации морального вреда
-                      </CardDescription>
-                    </div>
-                    <Icon name="FileText" size={32} className="text-primary flex-shrink-0" />
+                  <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+                    <Icon name="Calculator" size={24} className="text-primary" />
                   </div>
+                  <CardTitle>Модель ценообразования</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-sm text-muted-foreground mb-4">
-                    Разъяснения о том, что юридическое лицо возмещает вред, причиненный жизни или здоровью гражданина источником повышенной опасности (автомобилем), независимо от вины, если не докажет, что вред возник вследствие непреодолимой силы или умысла потерпевшего.
-                  </p>
-                  <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                    <Icon name="Calendar" size={14} />
-                    <span>26 января 2010</span>
-                  </div>
+                  <ul className="space-y-2 text-sm text-muted-foreground">
+                    <li className="flex items-start gap-2">
+                      <Icon name="ChevronRight" size={16} className="mt-0.5 flex-shrink-0" />
+                      <span>Фиксированная абонплата</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <Icon name="ChevronRight" size={16} className="mt-0.5 flex-shrink-0" />
+                      <span>Комиссия от оборота</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <Icon name="ChevronRight" size={16} className="mt-0.5 flex-shrink-0" />
+                      <span>Оплата за процедуру</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <Icon name="ChevronRight" size={16} className="mt-0.5 flex-shrink-0" />
+                      <span>Смешанная модель</span>
+                    </li>
+                  </ul>
                 </CardContent>
               </Card>
 
               <Card className="border-border hover:shadow-lg transition-shadow">
                 <CardHeader>
-                  <div className="flex items-start justify-between gap-4">
-                    <div>
-                      <CardTitle className="text-xl">
-                        Апелляционное определение Московского городского суда от 12.03.2019
-                      </CardTitle>
-                      <CardDescription className="mt-2">
-                        Ограничение материальной ответственности водителя
-                      </CardDescription>
-                    </div>
-                    <Icon name="FileText" size={32} className="text-primary flex-shrink-0" />
+                  <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+                    <Icon name="PiggyBank" size={24} className="text-primary" />
                   </div>
+                  <CardTitle>Экономия затрат</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-sm text-muted-foreground mb-4">
-                    Суд указал, что при регрессном иске работодателя к водителю размер взыскания ограничен средним месячным заработком работника (ТК РФ ст. 241), за исключением случаев умышленного причинения ущерба или причинения ущерба в состоянии опьянения.
-                  </p>
-                  <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                    <Icon name="Calendar" size={14} />
-                    <span>12 марта 2019</span>
-                  </div>
+                  <ul className="space-y-2 text-sm text-muted-foreground">
+                    <li className="flex items-start gap-2">
+                      <Icon name="ChevronRight" size={16} className="mt-0.5 flex-shrink-0" />
+                      <span>Снижение цены закупки (до 30%)</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <Icon name="ChevronRight" size={16} className="mt-0.5 flex-shrink-0" />
+                      <span>Сокращение времени процедур</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <Icon name="ChevronRight" size={16} className="mt-0.5 flex-shrink-0" />
+                      <span>Автоматизация процессов</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <Icon name="ChevronRight" size={16} className="mt-0.5 flex-shrink-0" />
+                      <span>ROI за первый год</span>
+                    </li>
+                  </ul>
                 </CardContent>
               </Card>
             </div>
@@ -344,76 +458,121 @@ const Index = () => {
         </div>
       </section>
 
-      <section id="contact" className="py-16 bg-muted/30">
+      <section id="comparison" className="py-16 bg-muted/30">
         <div className="container mx-auto px-4">
-          <div className="max-w-2xl mx-auto">
-            <h2 className="text-4xl font-bold mb-8 text-center">Контакты</h2>
+          <div className="max-w-6xl mx-auto">
+            <h2 className="text-4xl font-bold mb-8 text-center">Сравнительный анализ</h2>
             <Card className="border-border">
-              <CardHeader>
-                <CardTitle>Запрос консультации</CardTitle>
-                <CardDescription>
-                  Заполните форму, и мы свяжемся с вами для предоставления юридической консультации
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
-                  <div className="space-y-2">
-                    <label htmlFor="name" className="text-sm font-medium">
-                      Имя
-                    </label>
-                    <Input id="name" placeholder="Введите ваше имя" />
-                  </div>
-                  <div className="space-y-2">
-                    <label htmlFor="email" className="text-sm font-medium">
-                      Email
-                    </label>
-                    <Input id="email" type="email" placeholder="your@email.com" />
-                  </div>
-                  <div className="space-y-2">
-                    <label htmlFor="phone" className="text-sm font-medium">
-                      Телефон
-                    </label>
-                    <Input id="phone" type="tel" placeholder="+7 (___) ___-__-__" />
-                  </div>
-                  <div className="space-y-2">
-                    <label htmlFor="message" className="text-sm font-medium">
-                      Сообщение
-                    </label>
-                    <Textarea
-                      id="message"
-                      placeholder="Опишите вашу ситуацию..."
-                      rows={4}
-                    />
-                  </div>
-                  <Button type="submit" className="w-full bg-primary hover:bg-primary/90">
-                    Отправить запрос
-                  </Button>
-                </form>
+              <CardContent className="p-6">
+                <div className="overflow-x-auto">
+                  <table className="w-full">
+                    <thead>
+                      <tr className="border-b">
+                        <th className="text-left py-3 px-4 font-semibold">Критерий</th>
+                        <th className="text-center py-3 px-4 font-semibold">Вес (%)</th>
+                        <th className="text-center py-3 px-4 font-semibold">Описание</th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-sm">
+                      <tr className="border-b hover:bg-muted/50">
+                        <td className="py-3 px-4">Охват аудитории</td>
+                        <td className="text-center py-3 px-4">20%</td>
+                        <td className="py-3 px-4 text-muted-foreground">Количество активных участников и география</td>
+                      </tr>
+                      <tr className="border-b hover:bg-muted/50">
+                        <td className="py-3 px-4">Функциональность</td>
+                        <td className="text-center py-3 px-4">18%</td>
+                        <td className="py-3 px-4 text-muted-foreground">Доступные типы торгов и инструменты</td>
+                      </tr>
+                      <tr className="border-b hover:bg-muted/50">
+                        <td className="py-3 px-4">Стоимость</td>
+                        <td className="text-center py-3 px-4">15%</td>
+                        <td className="py-3 px-4 text-muted-foreground">Общая стоимость владения (TCO)</td>
+                      </tr>
+                      <tr className="border-b hover:bg-muted/50">
+                        <td className="py-3 px-4">Безопасность</td>
+                        <td className="text-center py-3 px-4">15%</td>
+                        <td className="py-3 px-4 text-muted-foreground">Защита данных и соответствие стандартам</td>
+                      </tr>
+                      <tr className="border-b hover:bg-muted/50">
+                        <td className="py-3 px-4">Техническая поддержка</td>
+                        <td className="text-center py-3 px-4">12%</td>
+                        <td className="py-3 px-4 text-muted-foreground">Качество и доступность поддержки</td>
+                      </tr>
+                      <tr className="border-b hover:bg-muted/50">
+                        <td className="py-3 px-4">Репутация</td>
+                        <td className="text-center py-3 px-4">10%</td>
+                        <td className="py-3 px-4 text-muted-foreground">Время на рынке, отзывы, рейтинги</td>
+                      </tr>
+                      <tr className="border-b hover:bg-muted/50">
+                        <td className="py-3 px-4">Интеграция</td>
+                        <td className="text-center py-3 px-4">10%</td>
+                        <td className="py-3 px-4 text-muted-foreground">Возможности интеграции с внешними системами</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
               </CardContent>
             </Card>
 
-            <div className="mt-8 grid md:grid-cols-3 gap-6 text-center">
-              <div className="flex flex-col items-center gap-2">
-                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
-                  <Icon name="Mail" size={24} className="text-primary" />
-                </div>
-                <h3 className="font-semibold">Email</h3>
-                <p className="text-sm text-muted-foreground">info@yurkonsalt.ru</p>
-              </div>
-              <div className="flex flex-col items-center gap-2">
-                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
-                  <Icon name="Phone" size={24} className="text-primary" />
-                </div>
-                <h3 className="font-semibold">Телефон</h3>
-                <p className="text-sm text-muted-foreground">+7 (495) 123-45-67</p>
-              </div>
-              <div className="flex flex-col items-center gap-2">
-                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
-                  <Icon name="MapPin" size={24} className="text-primary" />
-                </div>
-                <h3 className="font-semibold">Адрес</h3>
-                <p className="text-sm text-muted-foreground">Москва, ул. Примерная, д. 1</p>
-              </div>
+            <div className="mt-8 grid md:grid-cols-2 gap-6">
+              <Card className="border-border">
+                <CardHeader>
+                  <div className="flex items-center gap-3">
+                    <Icon name="CheckCircle" size={24} className="text-green-500" />
+                    <CardTitle>Преимущества лидеров рынка</CardTitle>
+                  </div>
+                </CardHeader>
+                <CardContent>
+                  <ul className="space-y-2 text-sm text-muted-foreground">
+                    <li className="flex items-start gap-2">
+                      <Icon name="Plus" size={16} className="mt-0.5 text-green-500 flex-shrink-0" />
+                      <span>Широкая база поставщиков и покупателей</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <Icon name="Plus" size={16} className="mt-0.5 text-green-500 flex-shrink-0" />
+                      <span>Стабильная техническая платформа</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <Icon name="Plus" size={16} className="mt-0.5 text-green-500 flex-shrink-0" />
+                      <span>Развитая экосистема услуг</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <Icon name="Plus" size={16} className="mt-0.5 text-green-500 flex-shrink-0" />
+                      <span>Регулярные обновления и улучшения</span>
+                    </li>
+                  </ul>
+                </CardContent>
+              </Card>
+
+              <Card className="border-border">
+                <CardHeader>
+                  <div className="flex items-center gap-3">
+                    <Icon name="AlertCircle" size={24} className="text-orange-500" />
+                    <CardTitle>На что обратить внимание</CardTitle>
+                  </div>
+                </CardHeader>
+                <CardContent>
+                  <ul className="space-y-2 text-sm text-muted-foreground">
+                    <li className="flex items-start gap-2">
+                      <Icon name="AlertTriangle" size={16} className="mt-0.5 text-orange-500 flex-shrink-0" />
+                      <span>Скрытые комиссии и дополнительные платежи</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <Icon name="AlertTriangle" size={16} className="mt-0.5 text-orange-500 flex-shrink-0" />
+                      <span>Ограничения в функционале базовых тарифов</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <Icon name="AlertTriangle" size={16} className="mt-0.5 text-orange-500 flex-shrink-0" />
+                      <span>Сложность миграции данных при переходе</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <Icon name="AlertTriangle" size={16} className="mt-0.5 text-orange-500 flex-shrink-0" />
+                      <span>Зависимость от одной площадки</span>
+                    </li>
+                  </ul>
+                </CardContent>
+              </Card>
             </div>
           </div>
         </div>
@@ -422,8 +581,7 @@ const Index = () => {
       <footer className="py-8 border-t bg-muted/10">
         <div className="container mx-auto px-4">
           <div className="text-center text-sm text-muted-foreground">
-            <p>© 2024 ЮрКонсалт. Все права защищены.</p>
-            <p className="mt-2">Информационный юридический портал</p>
+            <p>© 2024 ЭТП Метрики. Аналитический портал для выбора электронных торговых площадок</p>
           </div>
         </div>
       </footer>
